@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-color: rgba(180, 243, 74, 0.35) transparent;
+}
+
+html {
+  background: #050b08;
+}
+
+body {
+  @apply bg-void text-ink font-body antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgba(180, 243, 74, 0.28);
+  color: #eaf6ef;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 243, 74, 0.25);
+  border-radius: 999px;
+}
+
+/* Visible, on-brand focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid #b4f34a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .glass-panel {
+    @apply relative border border-white/[0.07] bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .glass-card {
+    @apply glass-panel rounded-2xl shadow-card;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-lime-400/90;
+  }
+
+  .container-px {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+
+  .text-gradient-signal {
+    @apply bg-signal-gradient bg-clip-text text-transparent;
+  }
+
+  .grid-bg {
+    background-image: theme("backgroundImage.grid-pattern");
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+}
+
+/* Respect reduced-motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
