@@ -1,0 +1,5 @@
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file is normally generated automatically by `next dev` / `next build`.
+// It is checked in here only so the project type-checks before the first run.
